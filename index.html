@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SEAP Inteligente - Divisão de Perícia Médica">
+  <title>SEAP Inteligente | Perícia Médica</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">SI</div>
+      <div>
+        <strong>DPM INTELIGENTE</strong>
+        <small>Divisão de Perícia Médica</small>
+      </div>
+    </div>
+
+    <div class="menu-label">MENU PRINCIPAL</div>
+
+    <nav>
+      <button class="nav-item active" data-page="dashboard">⌂ <span>Painel inicial</span></button>
+      <button class="nav-item" data-page="analise">▤ <span>Analisar protocolo</span></button>
+      <button class="nav-item" data-page="historico">◷ <span>Histórico</span></button>
+      <button class="nav-item" data-page="modelos">▧ <span>Modelos de despacho</span></button>
+      <button class="nav-item" data-page="normas">§ <span>Base normativa</span></button>
+    </nav>
+
+    <div class="menu-label">ADMINISTRAÇÃO</div>
+
+    <nav>
+      <button class="nav-item" data-page="equipe">♙ <span>Equipe</span></button>
+      <button class="nav-item" data-page="auditoria">◉ <span>Auditoria</span></button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="status-dot"></span>
+      Ambiente de desenvolvimento
+      <small>Versão 1.0.0</small>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div>
+        <strong>Divisão de Perícia Médica</strong>
+        <small>DPM | Governo do Paraná</small>
+      </div>
+      <div class="user-area">
+        <div class="avatar">DP</div>
+        <div>
+          <strong>Ambiente de teste</strong>
+          <small>Usuário demonstrativo</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <section id="dashboard" class="page active">
+        <div class="page-heading">
+          <div>
+            <h1>Painel administrativo</h1>
+            <p>Apoio à análise de protocolos da Divisão de Perícia Médica.</p>
+          </div>
+          <button class="primary" onclick="navigate('analise')">
+            + Nova análise
+          </button>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <span>Protocolos analisados</span>
+            <strong id="totalAnalises">0</strong>
+            <small>Registros desta sessão</small>
+          </div>
+          <div class="stat-card">
+            <span>Documentos selecionados</span>
+            <strong id="totalDocumentos">0</strong>
+            <small>Arquivos demonstrativos</small>
+          </div>
+          <div class="stat-card">
+            <span>Relatórios gerados</span>
+            <strong id="totalRelatorios">0</strong>
+            <small>Registros desta sessão</small>
+          </div>
+          <div class="stat-card">
+            <span>Módulos disponíveis</span>
+            <strong>6</strong>
+            <small>Áreas especializadas</small>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Áreas de atuação</h2>
+          <div class="module-grid">
+            <button class="module" onclick="selectArea('Perícia médica')">
+              <span>⚕</span>
+              <strong>Perícia médica</strong>
+              <small>Análise administrativa</small>
+            </button>
+            <button class="module" onclick="selectArea('Licenças médicas')">
+              <span>◷</span>
+              <strong>Licenças médicas</strong>
+              <small>Solicitações e prazos</small>
+            </button>
+            <button class="module" onclick="selectArea('Reconsideração pericial')">
+              <span>↻</span>
+              <strong>Reconsideração</strong>
+              <small>Revisão de análises</small>
+            </button>
+            <button class="module" onclick="selectArea('Aposentadorias')">
+              <span>▤</span>
+              <strong>Aposentadorias</strong>
+              <small>Instrução processual</small>
+            </button>
+            <button class="module" onclick="selectArea('Carga horária')">
+              <span>◴</span>
+              <strong>Carga horária</strong>
+              <small>Análise de solicitações</small>
+            </button>
+            <button class="module" onclick="selectArea('Outros assuntos')">
+              <span>▧</span>
+              <strong>Outros assuntos</strong>
+              <small>Demandas administrativas</small>
+            </button>
+          </div>
+        </div>
+
+        <div class="notice">
+          <strong>Ambiente de desenvolvimento:</strong>
+          utilize exclusivamente documentos fictícios ou anonimizados.
+          O sistema ainda não está conectado à infraestrutura institucional.
+        </div>
+      </section>
+
+      <section id="analise" class="page">
+        <div class="page-heading">
+          <div>
+            <h1>Nova análise processual</h1>
+            <p>Preparação de processo para análise documental.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Identificação do protocolo</h2>
+
+          <label for="numero">Número do e-Protocolo</label>
+          <input id="numero" placeholder="Número do protocolo">
+
+          <label for="assunto">Área de análise</label>
+          <select id="assunto">
+            <option value="">Selecione o assunto</option>
+            <option>Perícia médica</option>
+            <option>Licença médica</option>
+            <option>Pedido de licença fora do prazo</option>
+            <option>Reconsideração de análise pericial</option>
+            <option>Aposentadoria</option>
+            <option>Carga horária</option>
+            <option>Outros assuntos</option>
+          </select>
+
+          <label for="observacoes">Observações do analista</label>
+          <textarea id="observacoes" placeholder="Informações adicionais sobre o protocolo..."></textarea>
+        </div>
+
+        <div class="panel">
+          <h2>Importação de documentos</h2>
+          <p class="muted">Selecione um arquivo ZIP contendo os documentos do processo.</p>
+
+          <div class="drop-area" id="dropArea">
+            <div class="upload-icon">⇧</div>
+            <strong>Selecione ou arraste seu arquivo ZIP</strong>
+            <p>Arquivo compactado contendo PDF, Word e imagens.</p>
+            <input type="file" id="zipFile" accept=".zip,application/zip">
+            <div id="fileInfo">Nenhum arquivo selecionado.</div>
+          </div>
+
+          <div class="notice warning">
+            Nesta versão, o arquivo não será enviado nem aberto.
+            A leitura e o OCR serão habilitados após integração com
+            o servidor institucional aprovado.
+          </div>
+
+          <button class="primary" id="prepareButton">
+            Preparar cadastro demonstrativo
+          </button>
+          <p id="feedback" role="status"></p>
+        </div>
+      </section>
+
+      <section id="historico" class="page">
+        <div class="page-heading">
+          <div>
+            <h1>Histórico de análises</h1>
+            <p>Registros temporários da sessão de demonstração.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div id="historyList">Nenhuma análise registrada.</div>
+        </div>
+      </section>
+
+      <section id="modelos" class="page">
+        <div class="page-heading">
+          <div>
+            <h1>Modelos de despacho</h1>
+            <p>Biblioteca de documentos administrativos.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <p>Espaço reservado para modelos oficiais aprovados pela Divisão.</p>
+        </div>
+      </section>
+
+      <section id="normas" class="page">
+        <div class="page-heading">
+          <div>
+            <h1>Base normativa</h1>
+            <p>Legislação e orientações aplicáveis.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <p>Espaço reservado para legislação, atos normativos e orientações institucionais validadas.</p>
+        </div>
+      </section>
+
+      <section id="equipe" class="page">
+        <div class="page-heading">
+          <div>
+            <h1>Gestão da equipe</h1>
+            <p>Estrutura de usuários e permissões.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <p>O cadastro de usuários será integrado à autenticação institucional.</p>
+        </div>
+      </section>
+
+      <section id="auditoria" class="page">
+        <div class="page-heading">
+          <div>
+            <h1>Auditoria</h1>
+            <p>Rastreabilidade das operações.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <p>Os eventos serão registrados no banco institucional após a implantação.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <footer>
+      DPM | Divisão de Perícia Médica |
+      Protótipo para homologação institucional
+    </footer>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
